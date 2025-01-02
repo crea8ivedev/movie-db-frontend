@@ -1,8 +1,15 @@
 import React from "react";
 import Button from "@/components/Button";
 import Input from "@/components/Input";
+import { useNavigate } from "react-router-dom";
 
 export default function Login() {
+  const navigate = useNavigate()
+
+  function handleLogin(){
+    navigate("/movies")
+  }
+
   return (
     <div className="grid place-content-center h-screen">
       <div className="w-80">
@@ -21,7 +28,7 @@ export default function Login() {
               <span>Remember Me</span>
             </label>
           </div>
-          <Button className="w-full block">Login</Button>
+          <Button className="w-full block" onClick={handleLogin}>Login</Button>
         </div>
       </div>
     </div>
