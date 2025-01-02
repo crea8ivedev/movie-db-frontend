@@ -1,28 +1,17 @@
-import Button from "@/components/Button";
-import Input from "@/components/Input";
+import AppLayout from "./layouts/AppLayout";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Login from "./pages/Login";
+import Movies from "./pages/Movies";
 
 export default function App() {
   return (
-    <div className="grid place-content-center h-screen">
-      <div className="w-80">
-        <h1 className="text-white font-semibold text-5xl text-center mb-7">
-          Sign In
-        </h1>
-        <div className="space-y-6 flex flex-col">
-          <Input type="text" placeholder="Email" className="w-full" />
-          <Input type="password" placeholder="Password" className="w-full" />
-          <div className="flex justify-center">
-            <label className="inline-flex items-center text-gray-400 space-x-3">
-              <Input
-                type="checkbox"
-                className="checked:bg-primary focus:checked:bg-primary active:bg-primary focus:active:bg-primary focus:outline-none focus:ring-offset-0 cursor-pointer"
-              />
-              <span>Remember Me</span>
-            </label>
-          </div>
-          <Button className="w-full block">Login</Button>
-        </div>
-      </div>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<AppLayout />}>
+          <Route index element={<Login />} />
+          <Route path="/movies" element={<Movies />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
