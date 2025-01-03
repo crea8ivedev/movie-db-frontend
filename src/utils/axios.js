@@ -9,7 +9,7 @@ axios.interceptors.response.use(
     return response;
   },
   (error) => {
-    if (error.response && error.response.status === 401) {
+    if (error.response && error.response.status === 401 && window.location.pathname !== "/") {
       window.location.href = "/"
       window.localStorage.removeItem("auth");
     }

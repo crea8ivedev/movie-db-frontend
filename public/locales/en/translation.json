@@ -15,15 +15,14 @@
     "check": "Remember Me",
     "button": "Login"
   },
-
-  "viewMove": {
+  "viewMovie": {
     "heading": "My Movies",
     "button": { "logout": "Logout" },
     "tooltip": {
-      "addMove": "Add New Move"
+      "addMovie": "Add New Movie"
     }
   },
-  "addMove": {
+  "addMovie": {
     "heading": "Create a now movie",
     "placeholder": {
       "file": "Click to upload or drag and drop",
@@ -34,12 +33,22 @@
     "error": {
       "requires": {
         "title": "Title is required",
-        "publish": "Publishing year is required"
+        "publish": "Publishing year is required.",
+        "poster": "Poster is required."
       },
       "validation": {
         "title": "Title must be at least 3 characters",
-        "publish": "Please enter a valid Publishing year"
+        "publish": "Please enter a valid Publishing year",
+        "posterSize": "File size should not exceed 2MB.",
+        "posterFormat": "Only PNG, JPG and JPEG images are allowed."
       }
     }
+  },
+  "editMovie":{
+    "heading": "Edit movie"
+  },
+  "emptyState": {
+    "heading": "Your movie list is empty",
+    "addMovie": "Add a new movie"
   }
 }
