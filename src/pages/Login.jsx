@@ -1,12 +1,14 @@
-import React from "react";
 import { useForm } from "react-hook-form";
 import Button from "@/components/Button";
 import Input from "@/components/Input";
 import { Navigate, useNavigate } from "react-router-dom";
 import axios from "@/utils/axios.js";
 import useAuth from "@/hooks/useAuth.js";
+import { useTranslation } from "react-i18next";
 
 export default function Login() {
+  const { t } = useTranslation();
+
   const navigate = useNavigate();
   const setIsLogin = useAuth((state) => state.setIsLogin);
   const isLogin = useAuth((state) => state.isLogin);
@@ -16,10 +18,11 @@ export default function Login() {
     setError,
     formState: { errors },
   } = useForm();
+
   async function onSubmit(data) {
     try {
-      const res = await axios.post("/api/auth/login", data);
-      setIsLogin(true)
+      await axios.post("/api/auth/login", data);
+      setIsLogin(true);
       navigate("/movies");
     } catch (error) {
       setError("email", {
@@ -28,15 +31,15 @@ export default function Login() {
     }
   }
 
-  if(isLogin){
-    return <Navigate to="/movies"/>
+  if (isLogin) {
+    return <Navigate to="/movies" />;
   }
 
   return (
-    <div className="grid place-content-center h-screen">
+    <div className="grid place-content-center h-[calc(100%_-_58px)]">
       <div className="w-80">
-        <h1 className="text-white font-semibold text-5xl text-center mb-7">
-          Sign In
+        <h1 className="text-white font-semibold text-[45px] text-center mb-7">
+          {t("login.heading")}
         </h1>
         <form
           className="space-y-6 flex flex-col"
@@ -46,38 +49,38 @@ export default function Login() {
           <div>
             <Input
               type="text"
-              placeholder="Email"
+              placeholder={t("login.placeholder.email")}
               className="w-full"
               {...register("email", {
-                required: "Email is required",
+                required: "login.error.requires.email",
                 pattern: {
                   value: /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/,
-                  message: "Please enter a valid email address",
+                  message: "login.error.validation.email",
                 },
               })}
             />
             {errors.email && (
               <span className="text-red-400 text-sm">
-                {errors.email.message}
+                {t(errors.email.message)}
               </span>
             )}
           </div>
           <div>
             <Input
               type="password"
-              placeholder="Password"
+              placeholder={t("login.placeholder.password")}
               className="w-full"
               {...register("password", {
-                required: "Password is required",
+                required: "login.error.requires.password",
                 minLength: {
                   value: 8,
-                  message: "Password must be at least 6 characters",
+                  message: "login.error.validation.password",
                 },
               })}
             />
             {errors.password && (
               <span className="text-red-400 text-sm">
-                {errors.password.message}
+                {t(errors.password.message)}
               </span>
             )}
           </div>
@@ -88,11 +91,11 @@ export default function Login() {
                 className="checked:bg-primary focus:checked:bg-primary active:bg-primary focus:active:bg-primary focus:outline-none focus:ring-offset-0 cursor-pointer"
                 {...register("rememberMe")}
               />
-              <span>Remember Me</span>
+              <span>{t("login.check")}</span>
             </label>
           </div>
           <Button type="submit" className="w-full block">
-            Login
+            {t("login.button")}
           </Button>
         </form>
       </div>

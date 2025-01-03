@@ -1,0 +1,52 @@
+{
+  "login": {
+    "heading": "Iniciar sesión",
+    "placeholder": {
+      "email": "Correo electrónico",
+      "password": "Contraseña"
+    },
+    "error": {
+      "requires": {
+        "email": "El correo electrónico es obligatorio",
+        "password": "La contraseña es obligatoria"
+      },
+      "validation": {
+        "email": "Por favor, ingrese una dirección de correo electrónico válida",
+        "password": "La contraseña debe tener al menos 6 caracteres"
+      }
+    },
+    "check": "Recuérdame",
+    "button": "Iniciar sesión"
+  },
+  "viewMove": {
+    "heading": "Mis películas",
+    "button": {
+      "logout": "Cerrar sesión"
+    },
+    "tooltip": {
+      "addMove": "Agregar nueva película"
+    }
+  },
+  "addMove": {
+    "heading": "Crear una nueva película",
+    "placeholder": {
+      "file": "Haga clic para cargar o arrastre y suelte",
+      "title": "Título",
+      "publish": "Año de publicación"
+    },
+    "button": {
+      "cancel": "Cancelar",
+      "submit": "Enviar"
+    },
+    "error": {
+      "requires": {
+        "title": "El título es obligatorio",
+        "publish": "El año de publicación es obligatorio"
+      },
+      "validation": {
+        "title": "El título debe tener al menos 3 caracteres",
+        "publish": "Por favor, ingrese un año de publicación válido"
+      }
+    }
+  }
+}

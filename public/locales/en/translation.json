@@ -1,0 +1,45 @@
+{
+  "login": {
+    "heading": "Sign In",
+    "placeholder": { "email": "Email", "password": "Password" },
+    "error": {
+      "requires": {
+        "email": "Email is required",
+        "password": "Password is required"
+      },
+      "validation": {
+        "email": "Please enter a valid email address",
+        "password": "Password must be at least 6 characters"
+      }
+    },
+    "check": "Remember Me",
+    "button": "Login"
+  },
+
+  "viewMove": {
+    "heading": "My Movies",
+    "button": { "logout": "Logout" },
+    "tooltip": {
+      "addMove": "Add New Move"
+    }
+  },
+  "addMove": {
+    "heading": "Create a now movie",
+    "placeholder": {
+      "file": "Click to upload or drag and drop",
+      "title": "Title",
+      "publish": "Publishing year"
+    },
+    "button": { "cancel": "Cancel", "submit": "Submit" },
+    "error": {
+      "requires": {
+        "title": "Title is required",
+        "publish": "Publishing year is required"
+      },
+      "validation": {
+        "title": "Title must be at least 3 characters",
+        "publish": "Please enter a valid Publishing year"
+      }
+    }
+  }
+}

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-export default function ImageUpload({ file, setFile }) {
+export default function ImageUpload({ file, placeholder, setFile }) {
   const [preview, setPreview] = useState(file);
 
   const handleFileChange = (event) => {
@@ -8,7 +8,6 @@ export default function ImageUpload({ file, setFile }) {
     if (selectedFile) {
       setFile(selectedFile);
 
-      // Generate preview using FileReader
       const reader = new FileReader();
       reader.onload = () => setPreview(reader.result);
       reader.readAsDataURL(selectedFile);
@@ -16,7 +15,7 @@ export default function ImageUpload({ file, setFile }) {
   };
 
   return (
-    <div className="flex items-center justify-center w-[45%]">
+    <div className="flex items-center justify-center w-full px-10 md:px-0 md:w-[60%] lg:w-[45%]">
       <label
         htmlFor="dropzone-file"
         className="flex flex-col items-center justify-center w-full border-2 border-dashed rounded-lg cursor-pointer bg-primary-light aspect-[3/4]"
@@ -46,8 +45,7 @@ export default function ImageUpload({ file, setFile }) {
                 />
               </svg>
               <p className="mb-2 text-sm text-gray-300">
-                <span className="font-semibold">Click to upload</span> or drag
-                and drop
+                <span className="font-semibold">{placeholder}</span>
               </p>
               <p className="text-xs text-gray-400">
                 SVG, PNG, JPG or GIF (MAX. 800x400px)
