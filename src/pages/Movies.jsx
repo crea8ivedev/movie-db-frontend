@@ -2,8 +2,10 @@ import Button from "@/components/Button";
 import EmptyState from "@/components/EmptyState";
 import GridItem from "@/components/GridItem";
 import MovieGrid from "@/components/MovieGrid";
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "@/utils/axios";
+import useAuth from "@/hooks/useAuth";
 
 const data = [
   {
@@ -58,7 +60,25 @@ const data = [
 ];
 
 export default function Movies() {
-  const [movies, setMovies] = useState(data);
+  const [movies, setMovies] = useState([]);
+  const setIsLogin = useAuth((state)=>state.setIsLogin);
+  const navigate = useNavigate();
+
+  async function logout(){
+    await axios.delete('/api/auth/logout')
+    setIsLogin(false)
+    navigate("/")
+  }
+
+  async function fetchMovies(){
+    const { data: movies } = await axios.get(`/api/movies`)
+    setMovies(movies.data)
+  }
+
+  useEffect(() =>{
+     fetchMovies()
+  }, [])
+
   return movies.length < 1 ? (
     <EmptyState />
   ) : (
@@ -85,7 +105,7 @@ export default function Movies() {
             </svg>
           </Link>
         </div>
-        <Button>Logout</Button>
+        <Button onClick={logout}>Logout</Button>
       </div>
       <MovieGrid>
         {movies.map((movie, index) => (

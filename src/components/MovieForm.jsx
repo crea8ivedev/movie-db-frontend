@@ -46,7 +46,7 @@ export default function MovieForm({
             className="w-2/5"
           />
           <div className="flex items-center w-full space-x-4 pt-4">
-            <Button onClick={()=>navigate("/movies")} className="flex-1 bg-transparent border-gray-300 focus:bg-primary focus:border-primary hover:border-primary">
+            <Button onClick={()=>navigate("/movies")} className="flex-1 bg-transparent !border-gray-300 focus:bg-primary focus:border-primary hover:border-primary">
               Cancel
             </Button>
             <Button type="submit" className="flex-1">

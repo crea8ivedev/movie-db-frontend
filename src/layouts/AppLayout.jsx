@@ -1,7 +1,19 @@
+import useAuth from "@/hooks/useAuth";
 import React from "react";
-import { Outlet } from "react-router-dom";
+import { Navigate, Outlet, useLocation } from "react-router-dom";
 
 export default function AppLayout() {
+  const isLogin = useAuth(state=>state.isLogin)
+  const location = useLocation()
+
+  if(!isLogin){
+    if(location.pathname !== "/"){
+      return (
+        <Navigate to="/"/>
+      )
+    }
+  }
+
   return (
     <div className="w-full h-screen">
       <Outlet />
