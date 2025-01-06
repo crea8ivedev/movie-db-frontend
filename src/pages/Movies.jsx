@@ -8,6 +8,7 @@ import axios from "@/utils/axios";
 import useAuth from "@/hooks/useAuth";
 import { useTranslation } from "react-i18next";
 import DropdownUser from "@/components/Dropdown";
+import Loading from "@/components/Loading";
 
 export default function Movies() {
   const { t } = useTranslation();
@@ -15,6 +16,7 @@ export default function Movies() {
   const [movies, setMovies] = useState([]);
   const setIsLogin = useAuth((state) => state.setIsLogin);
   const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(true);
 
   async function logout() {
     await axios.delete("/api/auth/logout");
@@ -24,12 +26,15 @@ export default function Movies() {
 
   async function fetchMovies() {
     const { data: movies } = await axios.get(`/api/movies`);
+    setIsLoading(false)
     setMovies(movies.data);
   }
 
   useEffect(() => {
     fetchMovies();
   }, []);
+
+  if(isLoading) return <Loading/>
 
   return movies.length < 1 ? (
     <EmptyState />
