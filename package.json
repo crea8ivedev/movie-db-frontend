@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "start": "pm2 start 'cd dist && export VITE_BACKEND_URL=\"http://31.220.51.146:3002\" && http-server -p 3001' --name frontend"
+    "start": "pm2 start 'vite preview --port 3001 --host' --name frontend"
   },
   "dependencies": {
     "axios": "^1.7.9",
