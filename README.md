@@ -1,8 +1,28 @@
-# React + Vite
+# MovieDB Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Installation
 
-Currently, two official plugins are available:
+Follow these steps to set up and run the project:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+1. Installs all required project dependencies:
+
+   ```
+   npm install
+   ```
+
+2. Builds the project for production:
+
+   ```
+   npm run build
+   ```
+
+3. Starts the project in production mode after building.
+
+   ```
+   npm run start
+   ```
+
+4. Runs the project in development mode.
+   ```
+   npm run dev
+   ```
